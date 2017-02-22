@@ -9,10 +9,19 @@ acceleration_idx = 1
 time_idx         = 2
 indexArray = np.zeros((100))
 
-def generateOneX(x_0,v,t,a):
+def generateOneX(x_0,v,a,t):
     trainX = np.zeros((40,3))
     indexArray = x_0
-    trainX[indexArray] = [1,1,1]
+    trainX[indexArray] = [v,a,t]
+    return trainX
+
+def generateOneY(x_0,v,a,t):
+    trainY = np.zeros((40, 3))
+    index = int(x_0 + v*t + a * t*t / 2)
+    trainY[index] = [v,a,t]
+    return trainY
+
+
     return trainX
 
 def generateTrainX():
